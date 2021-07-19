@@ -1,10 +1,13 @@
 import { useRef } from "react";
 import { Row, Col, Input, Button } from 'antd';
 import styles from './Signin.module.css';
+import { LoginreqType } from "../type";
 
-// interface SigninProps {}
 
 
+interface SigninProps {
+    login: (reqData: LoginreqType) => void;
+}
 const Signin: React.FC<SigninProps> = () =>{
     const emailRef = useRef<Input>(null);
     const passwordRef = useRef<Input>(null);
@@ -56,7 +59,12 @@ const Signin: React.FC<SigninProps> = () =>{
 
     function click() {
         const email = emailRef.current!.state.value;
-        const password= passwordRef.current!.state.value;
+        const password = passwordRef.current!.state.value;
+        
+        // login({email, password})
         
     }
 }
+
+export default Signin;
+

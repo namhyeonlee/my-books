@@ -1,5 +1,7 @@
 
+import { takeEvery } from "@redux-saga/core/effects";
 import { createActions, handleAction, handleActions } from "redux-actions";
+import { LoginreqType } from "../../type";
 
 interface AuthState {
     token: string | null;
@@ -49,7 +51,20 @@ export default reducer;
 
 //saga
 
+export const { login, logout } = createActions("LOGIN", "LOGOUT", { prefix });
+
+// function* loginSaga(action: Action<LoginreqType>) {
+//     try {
+          
+//     } catch {
+        
+//       }
+// }
+
+function* logoutSaga(){}
+
 export function* authSaga() {
-    
+    yield takeEvery(`${prefix}/LOGIN`, loginSaga);
+    yield takeEvery(`${prefix}/LOGOUT`, logoutSaga);
 }
 
